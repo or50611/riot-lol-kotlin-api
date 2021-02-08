@@ -12,11 +12,13 @@ class CommonServiceImpl : CommonService {
     @Autowired
     lateinit var commonMapper: CommonMapper
 
-    override fun commonMatchList() {
+    override fun commonMatchList(): List<CommonMatchDto> {
         println("------------------CommonServiceAbst.commonMatchList")
         var matchList: List<CommonMatchDto> = commonMapper.selectCommonMatchList()
 
         println(matchList)
+
+        return matchList
 
     }
 
