@@ -27,15 +27,9 @@ class FeedController {
     fun feedMatchList(): ResponseEntity<Any> {
         val gson = Gson()
         var data: DataDto? = DataDto()
-
         var result: String? = null
 
         val list = commonService.commonMatchList()
-
-        if(list != null){
-            throw NumberFormatException()
-        }
-
 
         data?.test = list
         result = gson.toJson(data)
