@@ -1,5 +1,5 @@
 package com.springboot.riot.api.contents.common.dto
 
 data class DataDto (
-    var test: Any? = null
+    var data: Any? = null
 )

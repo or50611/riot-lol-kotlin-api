@@ -1,7 +1,13 @@
 package com.springboot.riot.api.contents.common.vo
 
 data class CommonMatchVo(
+
     val accountId: String? = null,
+    val activityNm: String? = null,
+    val activityKorNm: String? = null,
+    val teamSeq: Int = 0,
+    val mostLane: Int = 0,
+    val userName: String? = null,
     val gameId: Long = 0L,
     val platformId: String? = null,
     val champion: Int = 0,
@@ -9,7 +15,8 @@ data class CommonMatchVo(
     val season: Int = 0,
     val timeStamp: Long = 0L,
     val lane: String? = null,
-    val enemy_champion: Int = 0,
+    val enemyChampion: Int = 0,
+    val gameDuration: Int = 0,
     val spell1Id: Int = 0,
     val spell2Id: Int = 0,
     val teamId: Int = 0,
@@ -25,4 +32,5 @@ data class CommonMatchVo(
     val item4: Int = 0,
     val item5: Int = 0,
     val item6: Int = 0
+
 )

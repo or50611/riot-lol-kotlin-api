@@ -52,4 +52,32 @@
 		ORDER BY SM_INFO.GAME_ID
 	</select>
 
+	<select id="selectCommonItemList" resultType="com.springboot.riot.api.contents.common.vo.CommonItemVo">
+		SELECT I_B.I_KEY
+			, I_B.I_NAME
+			, I_B.DESCRIPTION
+			, I_B.COLLOQ
+			, I_B.PLAINTEXT
+			, I_G.BASE
+			, I_G.PURCHASABLE
+			, I_G.TOTAL
+			, I_G.SELL
+			, I_I.I_FULL
+		FROM ITEM_BASIC I_B
+		JOIN ITEM_GOLD I_G ON I_B.I_KEY = I_G.I_KEY
+		JOIN ITEM_IMAGE I_I ON I_B.I_KEY = I_I.I_KEY
+	</select>
+
+	<select id="selectCommonChampionList" resultType="com.springboot.riot.api.contents.common.vo.CommonChampionVo">
+		SELECT C_B.C_KEY
+			, C_B.ID
+			, C_B.C_NAME
+			, C_B.TITLE
+			, C_B.BLURB
+			, C_B.PAR_TYPE
+			, C_I.C_FULL
+		FROM CHAMPION_BASIC C_B
+		JOIN CHAMPION_IMAGE C_I ON C_B.C_KEY = C_I.C_KEY
+	</select>
+
 </mapper>

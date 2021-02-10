@@ -31,7 +31,7 @@ class FeedController {
 
         val list = commonService.commonMatchList()
 
-        data?.test = list
+        data?.data = list
         result = gson.toJson(data)
 
         return ResponseEntity(result, HttpStatus.OK)
