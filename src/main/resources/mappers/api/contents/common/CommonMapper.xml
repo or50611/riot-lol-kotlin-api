@@ -80,4 +80,16 @@
 		JOIN CHAMPION_IMAGE C_I ON C_B.C_KEY = C_I.C_KEY
 	</select>
 
+	<select id="selectCommonSummonerSpellsList" resultType="com.springboot.riot.api.contents.common.vo.CommonSummonerSpellsVo">
+		SELECT SS_B.S_KEY
+			, SS_B.ID
+			, SS_B.S_NAME
+			, SS_B.DESCRIPTION
+			, SS_I.S_FULL
+		FROM SUMMONER_SPELLS_BASIC SS_B
+		JOIN SUMMONER_SPELLS_IMAGE SS_I
+		ON   SS_B.S_KEY = SS_I.S_KEY
+		ORDER BY SS_B.S_KEY
+	</select>
+
 </mapper>

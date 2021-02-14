@@ -1,7 +1,5 @@
 package com.springboot.riot.api.contents.common.dto
 
-import com.fasterxml.jackson.annotation.JsonInclude
-
 
 data class SummonerMatchDto (
     var accountId: String? = null,
