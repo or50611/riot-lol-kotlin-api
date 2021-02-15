@@ -20,12 +20,14 @@ class CommonServiceImpl : CommonService {
     @Autowired
     lateinit var commonMapper: CommonMapper
 
+    val fileChampion = Globals.FILE_CHAMPION_PATH
+    val fileItem = Globals.FILE_ITEM_PATH
+    val fileSummonerSpell = Globals.FILE_SUMMONER_SPELL_PATH
+
     override fun commonMatchList(): ListDto? {
         var listDto = ListDto()
         var matchDataList = mutableListOf<SummonerMatchDto>()
         var matchData:SummonerMatchDto
-
-        val domain = Globals.getDomain()
 
         println("------------name : "+ Globals.getDomain())
 
@@ -46,6 +48,7 @@ class CommonServiceImpl : CommonService {
             matchData.platformId = match.platformId
             matchData.champion = findChampion(championList, match.champion)
             matchData.queue = match.queue
+            matchData.queueNm = Globals.queue(match.queue)
             matchData.season = match.season
             matchData.timeStamp = match.timeStamp
             matchData.lane = match.platformId
@@ -91,7 +94,7 @@ class CommonServiceImpl : CommonService {
             itemDto?.purchasable = it.purchasable
             itemDto?.total = it.total
             itemDto?.sell = it.sell
-            itemDto?.imageUrl = it.iFull
+            itemDto?.imageUrl = Globals.getDomain()+fileItem+it.iFull
             return itemDto
         }
         return itemDto
@@ -109,7 +112,7 @@ class CommonServiceImpl : CommonService {
             championDto?.title = it.title
             championDto?.blurb = it.blurb
             championDto?.parType = it.parType
-            championDto?.imageUrl = it.cFull
+            championDto?.imageUrl = Globals.getDomain()+fileChampion+it.cFull
             return championDto
         }
         return championDto
@@ -125,7 +128,7 @@ class CommonServiceImpl : CommonService {
             spellDto?.id = it.id
             spellDto?.name = it.sName
             spellDto?.description = it.description
-            spellDto?.imageUrl = it.sFull
+            spellDto?.imageUrl = Globals.getDomain()+fileSummonerSpell+it.sFull
             return spellDto
         }
         return spellDto

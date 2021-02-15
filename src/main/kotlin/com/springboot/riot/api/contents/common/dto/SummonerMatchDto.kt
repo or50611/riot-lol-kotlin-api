@@ -12,6 +12,7 @@ data class SummonerMatchDto (
     var platformId: String? = null,
     var champion: SummonerChampionDto? = null,
     var queue: Int = 0,
+    var queueNm: String? = null,
     var season: Int = 0,
     var timeStamp: Long = 0L,
     var lane: String? = null,
