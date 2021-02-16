@@ -21,7 +21,7 @@ data class SummonerMatchDto (
     var spell1: SummonerSpellDto? = null,
     var spell2: SummonerSpellDto? = null,
     var teamId: Int = 0,
-    var teamNm: Int = 0,
+    var teamNm: String? = null,
     var participantId: Int = 0,
     var win: Int = 0,
     var kills: Int = 0,
