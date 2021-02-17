@@ -3,17 +3,17 @@
 
 <mapper namespace="com.springboot.riot.api.contents.common.mapper.CommonMapper">
 
-	<select id="selectCommonMatchList" resultType="com.springboot.riot.api.contents.common.vo.CommonMatchVo">
+	<select id="selectCommonMatchList" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.common.vo.CommonMatchVo">
 		SELECT
 			SM_INFO.ACCOUNT_ID
 			, S_I.ACTIVITY_NM
 			, S_I.ACTIVITY_KOR_NM
-			, ST_I.CLASS
-			, C_C_1.CODE_NM AS CLASS_NM
+			, ST_I.CLASS AS CLASSIFICATION
+			, C_C_1.CODE_NM AS CLASSIFICATION_NM
 			, S_I.TEAM_SEQ
 			, ST_I.TEAM_NM
 			, ST_I.TEAM_KOR_NM
-			, S_I.LANE
+			, S_I.LANE AS MOST_LANE
 			, S_I.USER_NAME
 			, SM_INFO.GAME_ID
 			, SM_INFO.PLATFORM_ID
@@ -59,6 +59,7 @@
 		ON   ST_I.CLASS = C_C_1.CODE
 		AND  C_C_1.CODE_GROUP_SEQ = 1
 		ORDER BY SM_INFO.GAME_ID
+		LIMIT #{listSize}
 	</select>
 
 	<select id="selectCommonItemList" resultType="com.springboot.riot.api.contents.common.vo.CommonItemVo">

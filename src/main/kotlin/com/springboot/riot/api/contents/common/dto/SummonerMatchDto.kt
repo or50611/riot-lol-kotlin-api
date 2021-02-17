@@ -5,7 +5,10 @@ data class SummonerMatchDto (
     var accountId: String? = null,
     var activityNm: String? = null,
     var activityKorNm: String? = null,
+    var classification: Int = 0,
+    var classificationNm: Int = 0,
     var teamSeq: Int = 0,
+    var teamKorNm: String? = null,
     var mostLane: Int = 0,
     var userName: String? = null,
     var gameId: Long = 0L,
@@ -23,7 +26,7 @@ data class SummonerMatchDto (
     var teamId: Int = 0,
     var teamNm: String? = null,
     var participantId: Int = 0,
-    var win: Int = 0,
+    var win: Boolean = false,
     var kills: Int = 0,
     var deaths: Int = 0,
     var assists: Int = 0,
@@ -34,5 +37,6 @@ data class SummonerMatchDto (
     var item4: SummonerItemDto? = null,
     var item5: SummonerItemDto? = null,
     var item6: SummonerItemDto? = null
+
 )
 

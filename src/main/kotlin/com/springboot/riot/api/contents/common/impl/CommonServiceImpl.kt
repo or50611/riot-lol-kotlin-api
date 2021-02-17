@@ -24,14 +24,14 @@ class CommonServiceImpl : CommonService {
     val fileItem = Globals.FILE_ITEM_PATH
     val fileSummonerSpell = Globals.FILE_SUMMONER_SPELL_PATH
 
-    override fun commonMatchList(): ListDto? {
+    override fun commonMatchList(params: MatchSearchDto?): ListDto? {
         var listDto = ListDto()
         var matchDataList = mutableListOf<SummonerMatchDto>()
         var matchData:SummonerMatchDto
 
         println("------------name : "+ Globals.getDomain())
 
-        val matchList: List<CommonMatchVo> = commonMapper.selectCommonMatchList()
+        val matchList: List<CommonMatchVo> = commonMapper.selectCommonMatchList(params)
         val itemList: List<CommonItemVo> = commonMapper.selectCommonItemList()
         val championList: List<CommonChampionVo> = commonMapper.selectCommonChampionList()
         val summonerSpellList: List<CommonSummonerSpellsVo> = commonMapper.selectCommonSummonerSpellsList()
@@ -42,6 +42,7 @@ class CommonServiceImpl : CommonService {
             matchData.activityNm = match.activityNm
             matchData.activityKorNm = match.activityKorNm
             matchData.teamSeq = match.teamSeq
+            matchData.teamKorNm = match.teamKorNm
             matchData.mostLane = match.mostLane
             matchData.userName = match.userName
             matchData.gameId = match.gameId
@@ -57,7 +58,6 @@ class CommonServiceImpl : CommonService {
             matchData.spell1 = findSummonerSpell(summonerSpellList, match.spell1Id)
             matchData.spell2 = findSummonerSpell(summonerSpellList, match.spell2Id)
             matchData.teamId = match.teamId
-//            matchData.teamNm = match.teamNm
             matchData.participantId = match.participantId
             matchData.win = match.win
             matchData.kills = match.kills
