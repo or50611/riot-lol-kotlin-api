@@ -4,6 +4,8 @@
 <mapper namespace="com.springboot.riot.api.contents.common.mapper.CommonMapper">
 
 	<select id="selectCommonMatchList" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.common.vo.CommonMatchVo">
+		SELECT A.*
+		FROM (
 		SELECT
 			SM_INFO.ACCOUNT_ID
 			, S_I.ACTIVITY_NM
@@ -39,6 +41,7 @@
 			, MP_STATS.ITEM_4
 			, MP_STATS.ITEM_5
 			, MP_STATS.ITEM_6
+			, concat(SM_INFO.GAME_ID,LPAD(SM_INFO.CHAMPION,'4','0'),LPAD(MP_STATS.ITEM_0,'4','0')) AS NEXT_CURSOR
 		FROM SUMMONER_MATCH_INFO SM_INFO
 		JOIN SUMMONER_INFO S_I
 		ON   SM_INFO.ACCOUNT_ID = S_I.ACCOUNT_ID
@@ -58,7 +61,13 @@
 		JOIN COMMON_CODE C_C_1
 		ON   ST_I.CLASS = C_C_1.CODE
 		AND  C_C_1.CODE_GROUP_SEQ = 1
-		ORDER BY SM_INFO.GAME_ID
+		ORDER BY SM_INFO.GAME_ID DESC, SM_INFO.CHAMPION, MP_STATS.ITEM_0
+		) A
+		<choose>
+			<when test="nextCursor != 0">
+				WHERE A.NEXT_CURSOR <![CDATA[<]]> #{nextCursor}
+			</when>
+		</choose>
 		LIMIT #{listSize}
 	</select>
 

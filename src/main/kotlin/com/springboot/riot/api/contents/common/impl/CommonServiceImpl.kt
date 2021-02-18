@@ -29,8 +29,6 @@ class CommonServiceImpl : CommonService {
         var matchDataList = mutableListOf<SummonerMatchDto>()
         var matchData:SummonerMatchDto
 
-        println("------------name : "+ Globals.getDomain())
-
         val matchList: List<CommonMatchVo> = commonMapper.selectCommonMatchList(params)
         val itemList: List<CommonItemVo> = commonMapper.selectCommonItemList()
         val championList: List<CommonChampionVo> = commonMapper.selectCommonChampionList()
@@ -72,8 +70,10 @@ class CommonServiceImpl : CommonService {
             matchData.item6 = findItem(itemList, match.item6)
 
             matchDataList.add(matchData)
-
         }
+
+        listDto.nextCursor = matchList.lastOrNull()?.nextCursor ?: 0
+
         listDto.list = matchDataList
         return listDto
 

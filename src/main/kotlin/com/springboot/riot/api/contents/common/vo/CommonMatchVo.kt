@@ -5,7 +5,10 @@ data class CommonMatchVo(
     val accountId: String? = null,
     val activityNm: String? = null,
     val activityKorNm: String? = null,
+    val classification: String? = null,
+    val classificationNm: String? = null,
     val teamSeq: Int = 0,
+    val teamNm: String? = null,
     val teamKorNm: String? = null,
     val mostLane: Int = 0,
     val userName: String? = null,
@@ -32,6 +35,7 @@ data class CommonMatchVo(
     val item3: Int = 0,
     val item4: Int = 0,
     val item5: Int = 0,
-    val item6: Int = 0
+    val item6: Int = 0,
+    val nextCursor: Long = 0L
 
 )
