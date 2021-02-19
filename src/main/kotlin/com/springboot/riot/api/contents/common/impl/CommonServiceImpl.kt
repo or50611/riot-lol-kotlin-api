@@ -39,9 +39,12 @@ class CommonServiceImpl : CommonService {
             matchData.accountId = match.accountId
             matchData.activityNm = match.activityNm
             matchData.activityKorNm = match.activityKorNm
+            matchData.classification = match.classification
+            matchData.classificationNm = match.classificationNm
             matchData.teamSeq = match.teamSeq
             matchData.teamKorNm = match.teamKorNm
             matchData.mostLane = match.mostLane
+            matchData.mostLaneNm = match.mostLaneNm
             matchData.userName = match.userName
             matchData.gameId = match.gameId
             matchData.platformId = match.platformId
