@@ -29,6 +29,8 @@
 			, M_B.GAME_DURATION
 			, MP_BASIC.SPELL1_ID
 			, MP_BASIC.SPELL2_ID
+			, MP_STATS.PERK_PRIMARY_STYLE
+			, MP_STATS.PERK_SUB_STYLE
 			, MP_BASIC.TEAM_ID
 			, MP_STATS.PARTICIPANT_ID
 			, MP_STATS.WIN
@@ -73,6 +75,13 @@
 		LIMIT #{listSize}
 	</select>
 
+	<select id="selectCommonVersionList" resultType="com.springboot.riot.api.contents.common.vo.CommonVersionVo">
+		SELECT TITLE
+			, VERSION
+		FROM VERSION_INFO
+		ORDER BY TITLE
+	</select>
+
 	<select id="selectCommonItemList" resultType="com.springboot.riot.api.contents.common.vo.CommonItemVo">
 		SELECT I_B.I_KEY
 			, I_B.I_NAME
@@ -111,6 +120,42 @@
 		JOIN SUMMONER_SPELLS_IMAGE SS_I
 		ON   SS_B.S_KEY = SS_I.S_KEY
 		ORDER BY SS_B.S_KEY
+	</select>
+
+	<select id="selectCommonRuneList" resultType="com.springboot.riot.api.contents.common.vo.CommonRuneVo">
+		SELECT ID
+			, PARENT_ID
+			, R_KEY
+			, FILE_NM
+			, ICON
+			, R_NAME
+			, SHORT_DESC
+			, LONG_DESC
+		FROM RUNE_INFO
+		ORDER BY ID
+	</select>
+
+	<select id="selectCommonChampionSpellList" resultType="com.springboot.riot.api.contents.common.vo.CommonChampionSpellVo">
+		SELECT
+			CS_B.C_KEY
+			, CS_B.SKILL_SLOT
+			, CS_B.ID
+			, CS_B.S_NAME
+			, CS_B.DESCRIPTION
+			, CS_B.TOOLTIP
+			, CS_B.MAX_RANK
+			, CS_B.COOLDOWN_BURN
+			, CS_B.COST_BURN
+			, CS_B.COST_TYPE
+			, CS_B.MAX_AMMO
+			, CS_B.RANGE_BURN
+			, CS_B.RESOURCE
+			, CS_I.S_FULL
+		FROM CHAMPION_SPELLS_BASIC CS_B
+		JOIN CHAMPION_SPELLS_IMAGE CS_I
+		ON   CS_B.C_KEY = CS_I.C_KEY
+		AND  CS_B.SKILL_SLOT = CS_I.SKILL_SLOT
+		ORDER BY CS_B.C_KEY, CS_B.SKILL_SLOT
 	</select>
 
 </mapper>

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/feed")
+@RequestMapping("/lol/match")
 class FeedController {
     @Autowired
     lateinit var commonService: CommonService
@@ -21,12 +21,10 @@ class FeedController {
     @Autowired
     lateinit var feedService: FeedService
 
-    @RequestMapping(value =  ["/list"], method = [RequestMethod.GET])
+    @RequestMapping(value =  ["/v1/list"], method = [RequestMethod.GET])
     fun feedMatchList(request: HttpServletRequest): ResponseEntity<Any> {
         val search = BaseController()
         val params: MatchSearchDto = search.getSearch(request)
-
-        println("--------------------params listSize : "+params.listSize)
 
         val gson = Gson()
         val data: DataDto = DataDto()

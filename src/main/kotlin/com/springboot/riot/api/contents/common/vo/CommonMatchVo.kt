@@ -24,6 +24,8 @@ data class CommonMatchVo(
     val gameDuration: Int = 0,
     val spell1Id: Int = 0,
     val spell2Id: Int = 0,
+    val perkPrimaryStyle: Int = 0,
+    val perkSubStyle: Int = 0,
     val teamId: Int = 0,
     val participantId: Int = 0,
     val win: Boolean = false,
