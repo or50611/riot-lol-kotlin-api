@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.springboot.riot.api.contents.detail.mapper.DetailMapper">
+
+	<select id="selectMatchBasic" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.MatchBasicVo">
+		SELECT
+		GAME_ID
+		, PLATFORM_ID
+		, GAME_CREATION
+		, GAME_DURATION
+		, MAP_ID
+		, SEASON_ID
+		, GAME_VERSION
+		, GAME_MODE
+		, GAME_TYPE
+		FROM MATCH_BASIC
+		WHERE GAME_ID = #{gameId}
+	</select>
+
+	<select id="selectMatchTeam" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.MatchTeamVo">
+		SELECT
+		, GAME_ID
+		, TEAM_ID
+		, WIN
+		, FIRST_BLOOD
+		, FIRST_TOWER
+		, FIRST_INHIBITOR
+		, FIRST_BARON
+		, FIRST_DRAGON
+		, FIRST_RIFT_HERALD
+		, TOWER_KILLS
+		, INHIBITOR_KILLS
+		, BARON_KILLS
+		, VILEMAW_KILLS
+		, RIFT_HERALD_KILLS
+		, DOMINION_VICTORY_SCORE
+		FROM MATCH_TEAM
+		WHERE GAME_ID = #{gameId}
+	</select>
+
+	<select id="selectMatchTeamBan" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.MatchTeamBanVo">
+		SELECT
+		GAME_ID
+		, TEAM_ID
+		, CHAMPION_ID
+		, PICK_TURN
+		FROM MATCH_TEAM_BAN
+		WHERE GAME_ID = #{gameId}
+	</select>
+
+	<select id="selectMatchParticipantInfo" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.MatchParticipantInfoVo">
+		SELECT
+		MP_B.GAME_ID
+		, MP_B.PARTICIPANT_ID
+		, MP_B.TEAM_ID
+		, MP_B.CHAMPION_ID
+		, MP_B.SPELL1_ID
+		, MP_B.SPELL2_ID
+		, MP_I.PLATFORM_ID
+		, MP_I.ACCOUNT_ID
+		, MP_I.SUMMONER_NAME
+		, MP_I.SUMMONER_ID
+		, MP_I.CURRENT_PLATFORM_ID
+		, MP_I.CURRENT_ACCOUNT_ID
+		, MP_I.MATCH_HISTORY_URI
+		, MP_I.PROFILE_ICON
+		, MP_S.WIN
+		, MP_S.ITEM_0
+		, MP_S.ITEM_1
+		, MP_S.ITEM_2
+		, MP_S.ITEM_3
+		, MP_S.ITEM_4
+		, MP_S.ITEM_5
+		, MP_S.ITEM_6
+		, MP_S.KILLS
+		, MP_S.DEATHS
+		, MP_S.ASSISTS
+		, MP_S.LARGEST_KILLING_SPREE
+		, MP_S.LARGEST_MULTI_KILL
+		, MP_S.KILLING_SPREES
+		, MP_S.LONGEST_TIME_SPENT_LIVING
+		, MP_S.DOUBLE_KILLS
+		, MP_S.TRIPLE_KILLS
+		, MP_S.QUADRA_KILLS
+		, MP_S.PENTA_KILLS
+		, MP_S.UNREAL_KILLS
+		, MP_S.TOTAL_DAMAGE_DEALT
+		, MP_S.MAGIC_DAMAGE_DEALT
+		, MP_S.PHYSICAL_DAMAGE_DEALT
+		, MP_S.TRUE_DAMAGE_DEALT
+		, MP_S.LARGEST_CRITICAL_STRIKE
+		, MP_S.TOTAL_DAMAGE_DEALT_TO_CHAMPIONS
+		, MP_S.MAGIC_DAMAGE_DEALT_TO_CHAMPIONS
+		, MP_S.PHYSICAL_DAMAGE_DEALT_TO_CHAMPIONS
+		, MP_S.TRUE_DAMAGE_DEALT_TO_CHAMPIONS
+		, MP_S.TOTAL_HEAL
+		, MP_S.TOTAL_UNITS_HEALED
+		, MP_S.DAMAGE_SELF_MITIGATED
+		, MP_S.DAMAGE_DEALT_TO_OBJECTIVES
+		, MP_S.DAMAGE_DEALT_TO_TURRETS
+		, MP_S.VISION_SCORE
+		, MP_S.TIME_CCING_OTHERS
+		, MP_S.TOTAL_DAMAGE_TAKEN
+		, MP_S.MAGIC_DAMAGE_TAKEN
+		, MP_S.PHYSICAL_DAMAGE_TAKEN
+		, MP_S.TRUE_DAMAGE_TAKEN
+		, MP_S.GOLD_EARNED
+		, MP_S.GOLD_SPENT
+		, MP_S.TURRET_KILLS
+		, MP_S.INHIBITOR_KILLS
+		, MP_S.TOTAL_MINIONS_KILLED
+		, MP_S.NEUTRAL_MINIONS_KILLED
+		, MP_S.NEUTRAL_MINIONS_KILLED_TEAM_JUNGLE
+		, MP_S.NEUTRAL_MINIONS_KILLED_ENEMY_JUNGLE
+		, MP_S.TOTAL_TIME_CROWD_CONTROL_DEALT
+		, MP_S.CHAMP_LEVEL
+		, MP_S.VISION_WARDS_BOUGHT_INGAME
+		, MP_S.SIGHT_WARDS_BOUGHT_INGAME
+		, MP_S.WARDS_PLACED
+		, MP_S.WARDS_KILLED
+		, MP_S.FIRST_BLOOD_KILL
+		, MP_S.FIRST_BLOOD_ASSIST
+		, MP_S.FIRST_TOWER_KILL
+		, MP_S.FIRST_TOWER_ASSIST
+		, MP_S.FIRST_INHIBITOR_KILL
+		, MP_S.FIRST_INHIBITOR_ASSIST
+		, MP_S.COMBAT_PLAYER_SCORE
+		, MP_S.OBJECTIVE_PLAYER_SCORE
+		, MP_S.TOTAL_PLAYER_SCORE
+		, MP_S.TOTAL_SCORE_RANK
+		, MP_S.PLAYER_SCORE_0
+		, MP_S.PLAYER_SCORE_1
+		, MP_S.PLAYER_SCORE_2
+		, MP_S.PLAYER_SCORE_3
+		, MP_S.PLAYER_SCORE_4
+		, MP_S.PLAYER_SCORE_5
+		, MP_S.PLAYER_SCORE_6
+		, MP_S.PLAYER_SCORE_7
+		, MP_S.PLAYER_SCORE_8
+		, MP_S.PLAYER_SCORE_9
+		, MP_S.PERK_0
+		, MP_S.PERK_0_VAL_1
+		, MP_S.PERK_0_VAL_2
+		, MP_S.PERK_0_VAL_3
+		, MP_S.PERK_1
+		, MP_S.PERK_1_VAL_1
+		, MP_S.PERK_1_VAL_2
+		, MP_S.PERK_1_VAL_3
+		, MP_S.PERK_2
+		, MP_S.PERK_2_VAL_1
+		, MP_S.PERK_2_VAL_2
+		, MP_S.PERK_2_VAL_3
+		, MP_S.PERK_3
+		, MP_S.PERK_3_VAL_1
+		, MP_S.PERK_3_VAL_2
+		, MP_S.PERK_3_VAL_3
+		, MP_S.PERK_4
+		, MP_S.PERK_4_VAL_1
+		, MP_S.PERK_4_VAL_2
+		, MP_S.PERK_4_VAL_3
+		, MP_S.PERK_5
+		, MP_S.PERK_5_VAL_1
+		, MP_S.PERK_5_VAL_2
+		, MP_S.PERK_5_VAL_3
+		, MP_S.PERK_PRIMARY_STYLE
+		, MP_S.PERK_SUB_STYLE
+		, MP_S.STAT_PERK_0
+		, MP_S.STAT_PERK_1
+		, MP_S.STAT_PERK_2
+		, MP_T.LANE
+		, MP_T.LANE_SEQ
+		FROM MATCH_PARTICIPANT_BASIC MP_B
+		JOIN MATCH_PARTICIPANT_INFO MP_I
+		ON   MP_B.GAME_ID = MP_I.GAME_ID
+		AND  MP_B.PARTICIPANT_ID = MP_I.PARTICIPANT_ID
+		JOIN MATCH_PARTICIPANT_STATS MP_S
+		ON   MP_B.GAME_ID = MP_S.GAME_ID
+		AND  MP_B.PARTICIPANT_ID = MP_S.PARTICIPANT_ID
+		LEFT JOIN MATCH_PARTICIPANT_TIMELINE MP_T
+		ON   MP_B.GAME_ID = MP_T.GAME_ID
+		AND  MP_B.PARTICIPANT_ID = MP_T.PARTICIPANT_ID
+		WHERE MP_B.GAME_ID = #{gameId}
+		ORDER BY PARTICIPANT_ID
+	</select>
+
+	<select id="selectMatchParticipantInfo" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.MatchParticipantInfoVo">
+
+	</select>
+</mapper>
+
