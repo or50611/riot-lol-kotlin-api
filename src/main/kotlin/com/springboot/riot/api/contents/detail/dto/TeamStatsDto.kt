@@ -1,7 +1,6 @@
 package com.springboot.riot.api.contents.detail.dto
 
 data class TeamStatsDto(
-    var gameId: Long = 0L,
     var teamId: Int = 0,
     var win: String? = null,
     var firstBlood: Boolean = false,
@@ -16,4 +15,5 @@ data class TeamStatsDto(
     var vilemawKills: Boolean = false,
     var riftHeraldKills: Boolean = false,
     var dominionVictoryScore: Boolean = false,
+    var bans: List<TeamBansDto>? = null,
 )

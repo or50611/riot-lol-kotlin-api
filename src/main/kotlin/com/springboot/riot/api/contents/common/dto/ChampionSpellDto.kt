@@ -1,7 +1,7 @@
 package com.springboot.riot.api.contents.common.dto
 
 data class ChampionSpellDto (
-    var key: String? = null,
+    var key: Int = 0,
     var skillSlot: Int = 0,
     var id: String? = null,
     var name: String? = null,

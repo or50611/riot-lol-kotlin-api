@@ -2,7 +2,7 @@ package com.springboot.riot.api.contents.common.vo
 
 data class CommonChampionSpellVo (
 
-    val cKey: String? = null,
+    val cKey: Int = 0,
     val skillSlot: Int = 0,
     val id: String? = null,
     val sName: String? = null,

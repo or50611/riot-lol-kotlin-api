@@ -11,4 +11,6 @@ data class MatchDto(
     var gameVersion: String? = null,
     var gameMode: String? = null,
     var gameType: String? = null,
+    var teams: List<TeamStatsDto>? = null
+
 )
