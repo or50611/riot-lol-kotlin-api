@@ -5,7 +5,7 @@
 2021-02-07 시작.(진행중)
 
 
-
+-API목록
 http://218.38.52.81:7070/lol/match/v1/list?listSize=2&nextCursor=497612081604983006
 http://218.38.52.81:7070/lol/base/v1/version
 http://218.38.52.81:7070/lol/base/v1/item
