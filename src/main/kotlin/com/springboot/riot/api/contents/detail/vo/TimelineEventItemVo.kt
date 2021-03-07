@@ -1,8 +1,7 @@
 package com.springboot.riot.api.contents.detail.vo
 
 data class TimelineEventItemVo(
-    val seq: Int = 0,
-    val gameId: Int = 0,
+    val gameId: Long = 0L,
     val parentTimestamp: Int = 0,
     val timestamp: Int = 0,
     val eType: String? = null,
