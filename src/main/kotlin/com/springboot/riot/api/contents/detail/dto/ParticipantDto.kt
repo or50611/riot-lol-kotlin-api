@@ -7,6 +7,8 @@ data class ParticipantDto(
     var spell1Id: Int = 0,
     var spell2Id: Int = 0,
     var platformId: String? = null,
+    var tier: String? = null,
+    var rank: String? = null,
     var accountId: String? = null,
     var summonerName: String? = null,
     var summonerId: String? = null,

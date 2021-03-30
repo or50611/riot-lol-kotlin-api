@@ -71,6 +71,8 @@ class DetailServiceImpl: DetailService {
             infoDto.spell1Id = infoVo.spell1Id
             infoDto.spell2Id = infoVo.spell2Id
             infoDto.platformId = infoVo.currentPlatformId
+            infoDto.tier = infoVo.tier
+            infoDto.rank = infoVo.rank
             infoDto.accountId = infoVo.accountId
             infoDto.summonerName = infoVo.summonerName
             infoDto.summonerId = infoVo.summonerId

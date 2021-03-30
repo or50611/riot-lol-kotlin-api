@@ -8,6 +8,8 @@ data class MatchParticipantInfoVo(
     val spell1Id: Int = 0,
     val spell2Id: Int = 0,
     val platformId: String? = null,
+    val tier: String? = null,
+    val rank: String? = null,
     val accountId: String? = null,
     val summonerName: String? = null,
     val summonerId: String? = null,
