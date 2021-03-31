@@ -13,7 +13,5 @@ data class MatchDto(
     var gameType: String? = null,
     var teams: List<TeamStatsDto>? = null,
     var participants: List<ParticipantDto>? = null,
-    var itemEvent: List<TimelineEventItemDto>? = null,
-    var skillEvent: List<TimelineEventSkillDto>? = null,
 
 )

@@ -37,5 +37,22 @@ class DetailController {
         return ResponseEntity(result, HttpStatus.OK)
     }
 
+    @RequestMapping(value =  ["/v1/match/timeline"], method = [RequestMethod.GET])
+    fun matchTimelineV1Info(request: HttpServletRequest): ResponseEntity<Any> {
+        val search = BaseController()
+        val params: MatchSearchDto = search.getSearch(request)
+
+        val gson = Gson()
+        val data: DataDto = DataDto()
+        var result: String? = null
+
+        val list = detailService.selectMatchTeamTimeLine(params)
+
+        data.data = list
+        result = gson.toJson(data)
+
+        return ResponseEntity(result, HttpStatus.OK)
+    }
+
 
 }

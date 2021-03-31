@@ -25,8 +25,6 @@ class DetailServiceImpl: DetailService {
         val matchTeamList: List<MatchTeamVo> = detailMapper.selectMatchTeam(params)
         val matchTeamBanList: List<MatchTeamBanVo> = detailMapper.selectMatchTeamBan(params)
         val matchInfoList: List<MatchParticipantInfoVo> = detailMapper.selectMatchParticipantInfo(params)
-        val timelineEventItemList: List<TimelineEventItemVo> = detailMapper.selectMatchTimelineEventItem(params)
-        val timelineEventSkillList: List<TimelineEventSkillVo> = detailMapper.selectMatchTimelineEventSkill(params)
 
         matchDto.gameId = matchBasic.gameId
         matchDto.platformId = matchBasic.platformId
@@ -70,7 +68,7 @@ class DetailServiceImpl: DetailService {
             infoDto.championId = infoVo.championId
             infoDto.spell1Id = infoVo.spell1Id
             infoDto.spell2Id = infoVo.spell2Id
-            infoDto.platformId = infoVo.currentPlatformId
+            infoDto.platformId = infoVo.platformId
             infoDto.tier = infoVo.tier
             infoDto.rank = infoVo.rank
             infoDto.accountId = infoVo.accountId
@@ -189,6 +187,20 @@ class DetailServiceImpl: DetailService {
             arrayListOf(infoDto)
         }
 
+
+        matchDto.teams = matchTeamDataList
+        matchDto.participants = matchInfoDataList
+
+
+        return matchDto
+    }
+
+    override fun selectMatchTeamTimeLine(params: MatchSearchDto): MatchTimelineDto {
+        val matchTimelineDto: MatchTimelineDto = MatchTimelineDto()
+
+        val timelineEventItemList: List<TimelineEventItemVo> = detailMapper.selectMatchTimelineEventItem(params)
+        val timelineEventSkillList: List<TimelineEventSkillVo> = detailMapper.selectMatchTimelineEventSkill(params)
+
         val timelineEventItemDataList = timelineEventItemList.flatMap { itemVo ->
             val itemDto = TimelineEventItemDto()
 
@@ -216,14 +228,10 @@ class DetailServiceImpl: DetailService {
             arrayListOf(skillDto)
         }
 
-        matchDto.teams = matchTeamDataList
-        matchDto.participants = matchInfoDataList
-        matchDto.itemEvent = timelineEventItemDataList
-        matchDto.skillEvent = timelineEventSkillDataList
+        matchTimelineDto.itemEvent = timelineEventItemDataList
+        matchTimelineDto.skillEvent = timelineEventSkillDataList
 
-
-
-        return matchDto
+        return matchTimelineDto
     }
 
     private fun banVoToDto(vo: MatchTeamBanVo) : List<TeamBansDto> {

@@ -26,6 +26,7 @@ class BaseController {
         search.listSize = ServletRequestUtils.getIntParameter(request,"listSize",20)
         search.nextCursor = ServletRequestUtils.getLongParameter(request,"nextCursor",0)
         search.gameId = ServletRequestUtils.getLongParameter(request,"gameId",0)
+        search.accountId = ServletRequestUtils.getStringParameter(request,"accountId","")
 
         return search
     }
