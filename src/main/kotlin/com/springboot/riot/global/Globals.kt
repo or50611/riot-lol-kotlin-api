@@ -10,6 +10,7 @@ object Globals {
     const val FILE_SUMMONER_SPELL_PATH = "/riotImage/summoner_spell/"
     const val FILE_RUNE_PATH = "/riotImage/rune/"
     const val FILE_CHAMPION_SPELL_PATH = "/riotImage/spells/"
+    const val FILE_RANKED_POSITION_PATH = "/riotImage/ranked_positions/"
 
     fun getDomain(): String {
         val sra: ServletRequestAttributes = RequestContextHolder.currentRequestAttributes() as ServletRequestAttributes

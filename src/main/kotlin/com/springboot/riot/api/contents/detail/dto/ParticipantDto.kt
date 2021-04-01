@@ -9,6 +9,7 @@ data class ParticipantDto(
     var platformId: String? = null,
     var tier: String? = null,
     var rank: String? = null,
+    var positionImageUrl: String? = null,
     var accountId: String? = null,
     var summonerName: String? = null,
     var summonerId: String? = null,

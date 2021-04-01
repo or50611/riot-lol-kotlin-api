@@ -10,6 +10,7 @@ data class MatchParticipantInfoVo(
     val platformId: String? = null,
     val tier: String? = null,
     val rank: String? = null,
+    val fileNm: String? = null,
     val accountId: String? = null,
     val summonerName: String? = null,
     val summonerId: String? = null,

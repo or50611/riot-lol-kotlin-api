@@ -6,6 +6,7 @@ import com.springboot.riot.api.contents.detail.dto.*
 import com.springboot.riot.api.contents.detail.mapper.DetailMapper
 import com.springboot.riot.api.contents.detail.service.DetailService
 import com.springboot.riot.api.contents.detail.vo.*
+import com.springboot.riot.global.Globals
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -14,6 +15,8 @@ class DetailServiceImpl: DetailService {
 
     @Autowired
     lateinit var detailMapper: DetailMapper
+
+    val fileRankedPosition = Globals.FILE_RANKED_POSITION_PATH
 
     override fun selectMatchTeamInfo(params: MatchSearchDto): MatchDto {
         val matchDto: MatchDto = MatchDto()
@@ -71,6 +74,7 @@ class DetailServiceImpl: DetailService {
             infoDto.platformId = infoVo.platformId
             infoDto.tier = infoVo.tier
             infoDto.rank = infoVo.rank
+            infoDto.positionImageUrl = Globals.getDomain()+fileRankedPosition+infoVo.fileNm
             infoDto.accountId = infoVo.accountId
             infoDto.summonerName = infoVo.summonerName
             infoDto.summonerId = infoVo.summonerId
