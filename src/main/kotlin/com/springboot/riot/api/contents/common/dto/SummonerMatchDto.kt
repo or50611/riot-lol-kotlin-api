@@ -13,6 +13,8 @@ data class SummonerMatchDto (
     var mostLane: Int = 0,
     var mostLaneNm: String? = null,
     var userName: String? = null,
+    var tier: String? = null,
+    var rank: String? = null,
     var gameId: Long = 0L,
     var platformId: String? = null,
     var champion: Int = 0,

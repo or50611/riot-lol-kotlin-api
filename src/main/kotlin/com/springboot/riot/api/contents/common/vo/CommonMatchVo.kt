@@ -13,6 +13,8 @@ data class CommonMatchVo(
     val mostLane: Int = 0,
     val mostLaneNm: String? = null,
     val userName: String? = null,
+    val tier: String? = null,
+    val rank: String? = null,
     val gameId: Long = 0L,
     val platformId: String? = null,
     val champion: Int = 0,
