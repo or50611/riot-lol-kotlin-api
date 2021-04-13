@@ -15,6 +15,7 @@ data class CommonMatchVo(
     val userName: String? = null,
     val tier: String? = null,
     val rank: String? = null,
+    val fileNm: String? = null,
     val gameId: Long = 0L,
     val platformId: String? = null,
     val champion: Int = 0,

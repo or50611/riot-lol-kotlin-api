@@ -22,6 +22,7 @@ class CommonServiceImpl : CommonService {
     val fileSummonerSpell = Globals.FILE_SUMMONER_SPELL_PATH
     val fileRune = Globals.FILE_RUNE_PATH
     val fileChampionSpell = Globals.FILE_CHAMPION_SPELL_PATH
+    val fileRankedPosition = Globals.FILE_RANKED_POSITION_PATH
 
     override fun commonMatchList(params: MatchSearchDto?): ListDto? {
         val listDto = ListDto()
@@ -45,6 +46,7 @@ class CommonServiceImpl : CommonService {
             matchData.userName = match.userName
             matchData.tier = match.tier
             matchData.rank = match.rank
+            matchData.positionImageUrl = Globals.getDomain()+fileRankedPosition+match.fileNm
             matchData.gameId = match.gameId
             matchData.platformId = match.platformId
             matchData.champion = match.champion

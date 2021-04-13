@@ -15,6 +15,7 @@ data class SummonerMatchDto (
     var userName: String? = null,
     var tier: String? = null,
     var rank: String? = null,
+    var positionImageUrl: String? = null,
     var gameId: Long = 0L,
     var platformId: String? = null,
     var champion: Int = 0,
