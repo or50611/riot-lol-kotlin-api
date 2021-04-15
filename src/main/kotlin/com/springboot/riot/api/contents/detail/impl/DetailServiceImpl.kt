@@ -21,9 +21,6 @@ class DetailServiceImpl: DetailService {
     override fun selectMatchTeamInfo(params: MatchSearchDto): MatchDto {
         val matchDto: MatchDto = MatchDto()
 
-        println("---------params : "+params.gameId)
-
-
         val matchBasic: MatchBasicVo = detailMapper.selectMatchBasic(params)
         val matchTeamList: List<MatchTeamVo> = detailMapper.selectMatchTeam(params)
         val matchTeamBanList: List<MatchTeamBanVo> = detailMapper.selectMatchTeamBan(params)
@@ -39,29 +36,6 @@ class DetailServiceImpl: DetailService {
         matchDto.gameVersion = matchBasic.gameVersion
         matchDto.gameMode = matchBasic.gameMode
         matchDto.gameType = matchBasic.gameType
-
-
-        val matchTeamDataList = matchTeamList.flatMap { teamVo ->
-            val teamDto = TeamStatsDto()
-            teamDto.teamId = teamVo.teamId
-            teamDto.win = teamVo.win
-            teamDto.firstBlood = teamVo.firstBlood
-            teamDto.firstTower = teamVo.firstTower
-            teamDto.firstInhibitor = teamVo.firstInhibitor
-            teamDto.firstBaron = teamVo.firstBaron
-            teamDto.firstDragon = teamVo.firstDragon
-            teamDto.firstRiftHerald = teamVo.firstRiftHerald
-            teamDto.towerKills = teamVo.towerKills
-            teamDto.inhibitorKills = teamVo.inhibitorKills
-            teamDto.baronKills = teamVo.baronKills
-            teamDto.vilemawKills = teamVo.vilemawKills
-            teamDto.riftHeraldKills = teamVo.riftHeraldKills
-            teamDto.dominionVictoryScore = teamVo.dominionVictoryScore
-
-            teamDto.bans = matchTeamBanList.filter { it.teamId == teamVo.teamId }.flatMap(::banVoToDto)
-
-            arrayListOf(teamDto)
-        }
 
         val matchInfoDataList = matchInfoList.flatMap { infoVo ->
             val infoDto = ParticipantDto()
@@ -90,7 +64,7 @@ class DetailServiceImpl: DetailService {
             infoDto.item4 = infoVo.item4
             infoDto.item5 = infoVo.item5
             infoDto.item6 = infoVo.item6
-            infoDto.kills = infoVo.doubleKills
+            infoDto.kills = infoVo.kills
             infoDto.deaths = infoVo.deaths
             infoDto.assists = infoVo.assists
             infoDto.largestKillingSpree = infoVo.largestKillingSpree
@@ -189,6 +163,29 @@ class DetailServiceImpl: DetailService {
             infoDto.laneSeq = infoVo.laneSeq
             
             arrayListOf(infoDto)
+        }
+
+
+        val matchTeamDataList = matchTeamList.flatMap { teamVo ->
+            val teamDto = TeamStatsDto()
+            teamDto.teamId = teamVo.teamId
+            teamDto.win = teamVo.win
+            teamDto.firstBlood = teamVo.firstBlood
+            teamDto.firstTower = teamVo.firstTower
+            teamDto.firstInhibitor = teamVo.firstInhibitor
+            teamDto.firstBaron = teamVo.firstBaron
+            teamDto.firstDragon = teamVo.firstDragon
+            teamDto.firstRiftHerald = teamVo.firstRiftHerald
+            teamDto.towerKills = teamVo.towerKills
+            teamDto.inhibitorKills = teamVo.inhibitorKills
+            teamDto.baronKills = teamVo.baronKills
+            teamDto.vilemawKills = teamVo.vilemawKills
+            teamDto.riftHeraldKills = teamVo.riftHeraldKills
+            teamDto.dominionVictoryScore = teamVo.dominionVictoryScore
+
+            teamDto.bans = matchTeamBanList.filter { it.teamId == teamVo.teamId }.flatMap(::banVoToDto)
+
+            arrayListOf(teamDto)
         }
 
 
