@@ -19,4 +19,8 @@ interface DetailMapper {
 
     fun selectMatchTimelineEventSkill(params: MatchSearchDto): List<TimelineEventSkillVo>
 
+    fun selectMatchTimelineEventMonster(params: MatchSearchDto): List<TimelineEventMonsterVo>
+
+    fun selectMatchTimelineEventBuilding(params: MatchSearchDto): List<TimelineEventBuildingVo>
+
 }

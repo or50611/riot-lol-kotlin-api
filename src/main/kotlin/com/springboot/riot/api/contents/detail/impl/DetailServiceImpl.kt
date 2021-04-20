@@ -201,6 +201,8 @@ class DetailServiceImpl: DetailService {
 
         val timelineEventItemList: List<TimelineEventItemVo> = detailMapper.selectMatchTimelineEventItem(params)
         val timelineEventSkillList: List<TimelineEventSkillVo> = detailMapper.selectMatchTimelineEventSkill(params)
+        val timelineEventMonsterList: List<TimelineEventMonsterVo> = detailMapper.selectMatchTimelineEventMonster(params)
+        val timelineEventBuildingList: List<TimelineEventBuildingVo> = detailMapper.selectMatchTimelineEventBuilding(params)
 
         val timelineEventItemDataList = timelineEventItemList.flatMap { itemVo ->
             val itemDto = TimelineEventItemDto()

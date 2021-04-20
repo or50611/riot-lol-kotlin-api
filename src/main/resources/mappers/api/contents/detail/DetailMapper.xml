@@ -235,6 +235,53 @@
 		ORDER BY MT_S.PARTICIPANT_ID, MT_S.TIMESTAMP
 	</select>
 
+	<select id="selectMatchTimelineEventMonster" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.TimelineEventMonsterVo">
+		SELECT
+		MT_M.SEQ
+		, MT_M.GAME_ID
+		, MT_M.PARENT_TIMESTAMP
+		, MT_M.TIMESTAMP
+		, MT_M.E_TYPE
+		, MT_M.KILLER_ID
+		, MT_M.MONSTER_TYPE
+		, MT_M.MONSTER_SUB_TYPE
+		, MT_M.X
+		, MT_M.Y
+		FROM MATCH_PARTICIPANT_INFO MP_I
+		JOIN MATCH_TIMELINE_EVENT_MONSTER MT_M
+		ON   MP_I.GAME_ID = MT_M.GAME_ID
+		AND  MP_I.PARTICIPANT_ID = MT_M.KILLER_ID
+		WHERE MP_I.GAME_ID = #{gameId}
+		<if test="accountId != ''">
+			AND   MP_I.ACCOUNT_ID = #{accountId}
+		</if>
+		ORDER BY MT_M.KILLER_ID, MT_M.TIMESTAMP
+	</select>
+
+
+	<select id="selectMatchTimelineEventBuilding" parameterType="com.springboot.riot.api.contents.common.dto.MatchSearchDto" resultType="com.springboot.riot.api.contents.detail.vo.TimelineEventBuildingVo">
+		SELECT
+		MT_B.SEQ
+		, MT_B.GAME_ID
+		, MT_B.PARENT_TIMESTAMP
+		, MT_B.TIMESTAMP
+		, MT_B.E_TYPE
+		, MT_B.KILLER_ID
+		, MT_B.TEAM_ID
+		, MT_B.BUILDING_TYPE
+		, MT_B.TOWER_TYPE
+		, MT_B.X
+		, MT_B.Y
+		FROM MATCH_PARTICIPANT_INFO MP_I
+		JOIN MATCH_TIMELINE_EVENT_BUILDING MT_B
+		ON   MP_I.GAME_ID = MT_B.GAME_ID
+		AND  MP_I.PARTICIPANT_ID = MT_B.KILLER_ID
+		WHERE MP_I.GAME_ID = #{gameId}
+		<if test="accountId != ''">
+			AND   MP_I.ACCOUNT_ID = #{accountId}
+		</if>
+		ORDER BY MT_B.KILLER_ID, MT_B.TIMESTAMP
+	</select>
 
 </mapper>
 
