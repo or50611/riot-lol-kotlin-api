@@ -209,7 +209,7 @@ class DetailServiceImpl: DetailService {
 
             itemDto.participantId = itemVo.participantId
             itemDto.parentTimestamp = itemVo.parentTimestamp
-            itemDto.timestamp = itemVo.parentTimestamp
+            itemDto.timestamp = itemVo.timestamp
             itemDto.type = itemVo.eType
             itemDto.itemId = itemVo.itemId
             itemDto.afterId = itemVo.afterId
@@ -223,7 +223,7 @@ class DetailServiceImpl: DetailService {
 
             skillDto.participantId = skillVo.participantId
             skillDto.parentTimestamp = skillVo.parentTimestamp
-            skillDto.timestamp = skillVo.parentTimestamp
+            skillDto.timestamp = skillVo.timestamp
             skillDto.type = skillVo.eType
             skillDto.skillSlot = skillVo.skillSlot
             skillDto.levelUpType = skillVo.levelUpType
