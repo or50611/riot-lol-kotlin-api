@@ -231,8 +231,24 @@ class DetailServiceImpl: DetailService {
             arrayListOf(skillDto)
         }
 
+        val timelineEventMonsterDataList = timelineEventMonsterList.flatMap { monsterVo ->
+            val monsterDto = TimelineEventMonsterDto()
+
+            monsterDto.killerId = monsterVo.killerId
+            monsterDto.parentTimestamp = monsterVo.parentTimestamp
+            monsterDto.timestamp = monsterVo.timestamp
+            monsterDto.type = monsterVo.eType
+            monsterDto.monsterType = monsterVo.monsterType
+            monsterDto.monsterSubType = monsterVo.monsterSubType
+            monsterDto.x = monsterVo.x
+            monsterDto.y = monsterVo.y
+
+            arrayListOf(monsterDto)
+        }
+
         matchTimelineDto.itemEvent = timelineEventItemDataList
         matchTimelineDto.skillEvent = timelineEventSkillDataList
+        matchTimelineDto.monsterEvent = timelineEventMonsterDataList
 
         return matchTimelineDto
     }
