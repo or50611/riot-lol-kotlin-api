@@ -12,4 +12,11 @@ class WebMainController {
         return "index"
     }
 
+
+    @RequestMapping(value=["/lol"])
+    fun indexSub ():String {
+        println("-------test")
+        return "/lol/index"
+    }
+
 }
