@@ -1,0 +1,62 @@
+@charset "UTF-8";
+/*basic===============================*/
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: #555;
+  font-size: 15px;
+  width:100%;
+  box-sizing: border-box;
+}
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+li {
+  word-break: keep-all;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #555;
+}
+.hidden {
+  overflow: hidden;
+  position:absolute;
+  width:1px;
+  height:1px;
+  margin:-1px;
+  clip-path: polygon(00,00,00);
+}
+button{
+  background:#fff;
+}
+/*common===============================*/
+.commonWrap{
+    width:1280px;
+    max-width: 1280px;
+    margin:3rem auto 0;
+}
+@media screen and (max-width: 1290px) {
+/*basic===============================*/
+  body {
+    font-size: 14px;
+  }
+/*common===============================*/
+.commonWrap{
+    width:90%;
+    margin:0 auto;
+}
+}
