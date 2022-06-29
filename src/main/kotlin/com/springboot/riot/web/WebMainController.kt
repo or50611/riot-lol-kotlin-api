@@ -3,9 +3,11 @@ package com.springboot.riot.web
 import com.springboot.riot.api.contents.common.controller.BaseController
 import com.springboot.riot.api.contents.common.dto.ListDto
 import com.springboot.riot.api.contents.common.dto.MatchSearchDto
+import com.springboot.riot.api.contents.common.dto.SummonerMatchDto
 import com.springboot.riot.api.contents.common.mapper.CommonMapper
 import com.springboot.riot.api.contents.common.service.CommonService
 import com.springboot.riot.api.contents.common.vo.CommonMatchVo
+import com.springboot.riot.web.dto.WebSummonerMatchDto
 import com.springboot.riot.web.mapper.WebMapper
 import com.springboot.riot.web.service.WebService
 import org.springframework.beans.factory.annotation.Autowired
@@ -32,7 +34,7 @@ class WebMainController {
 
         val list = webService.webCommonMatchList(params)
 
-        val matchList: List<CommonMatchVo> = webMapper.selectWebMatchList(params)
+        val matchList: List<WebSummonerMatchDto> = webMapper.selectWebMatchList(params)
         m.addAttribute("list", list);
         m.addAttribute("matchList", matchList)
         return "index"
