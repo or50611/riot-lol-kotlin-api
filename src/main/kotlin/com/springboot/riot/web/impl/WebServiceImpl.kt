@@ -2,7 +2,6 @@ package com.springboot.riot.web.impl
 
 import com.springboot.riot.api.contents.common.dto.ListDto
 import com.springboot.riot.api.contents.common.dto.MatchSearchDto
-import com.springboot.riot.api.contents.common.dto.SummonerMatchDto
 import com.springboot.riot.global.Globals
 import com.springboot.riot.web.Util.CommonUtill
 import com.springboot.riot.web.dto.WebSummonerMatchDto
@@ -10,7 +9,7 @@ import com.springboot.riot.web.mapper.WebMapper
 import com.springboot.riot.web.service.WebService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import kotlin.time.Duration
+import kotlin.math.roundToInt
 
 @Service
 class WebServiceImpl : WebService {
@@ -37,6 +36,7 @@ class WebServiceImpl : WebService {
             matchData = match
             matchData.converterDuration = CommonUtill.converterDuration(match.gameDuration)
             matchData.teamListDto = webMapper.selectTeamMatchList(match.gameId)
+            matchData.gameEndTimeConverterString = CommonUtill.toRelativeTimeString(match.gameEndTimestamp)
             matchDataList.add(matchData)
         }
 //        listDto.nextCursor = matchList.lastOrNull()?.nextCursor ?: 0

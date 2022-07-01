@@ -24,6 +24,7 @@ data class WebSummonerMatchDto(
     var gameDuration: Int = 0,
     var converterDuration: String? = null,
     var gameStartTimestamp: Long = 0L,
+    var gameEndTimeConverterString: String? = null,
     var gameEndTimestamp: Long = 0L,
     var gameVersion: String? = null,
     var championId: Int = 0,
